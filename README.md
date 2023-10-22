@@ -59,8 +59,4 @@ If you're interested in contributing to the enhancement of this project, kindly 
 
 We welcome contributions to fortify and expand the platform's capabilities.
 
-## Feedback and Assistance
-
-For inquiries, feedback, or support, please don't hesitate to open an issue or reach out via [your-email@example.com].
-
 Thank you for your collaboration! 🚀
