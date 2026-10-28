@@ -13,8 +13,8 @@ if(isset($_POST['like_post'])){
       $select_post_like->execute([$post_id, $user_id]);
 
       if($select_post_like->rowCount() > 0){
-         $remove_like = $conn->prepare("DELETE FROM `likes` WHERE post_id = ?");
-         $remove_like->execute([$post_id]);
+         $remove_like = $conn->prepare("DELETE FROM `likes` WHERE post_id = ? AND user_id = ?");
+         $remove_like->execute([$post_id, $user_id]);
          $message[] = 'removed from likes';
       }else{
          $add_like = $conn->prepare("INSERT INTO `likes`(user_id, post_id, admin_id) VALUES(?,?,?)");
