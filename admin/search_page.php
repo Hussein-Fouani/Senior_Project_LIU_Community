@@ -10,7 +10,7 @@ if(isset($_SESSION['user_id'])){
    $user_id = '';
 };
 
-include 'components/like_post.php';
+include '../components/like_post.php';
 
 ?>
 
@@ -24,17 +24,17 @@ include 'components/like_post.php';
 
     <!-- font awesome cdn link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="../css/admin_style.css"
+    <link rel="stylesheet" href="../css/admin_style.css">
 
 </head>
 <body>
 
-//header section starts
+<!-- header section starts -->
 <?php include '../components/admin_header.php';?>
-// header section ends
+<!-- header section ends -->
 
+<?php include '../components/user_header.php'; ?>
 
-<?php include 'components/user_header.php'; ?>
 
 <?php
    if(isset($_POST['search_box']) OR isset($_POST['search_btn'])){
@@ -45,8 +45,8 @@ include 'components/like_post.php';
 
       <?php
          $search_box = $_POST['search_box'];
-         $select_posts = $conn->prepare("SELECT * FROM `posts` WHERE title LIKE '%{$search_box}%' OR category LIKE '%{$search_box}%' AND status = ?");
-         $select_posts->execute(['active']);
+         $select_posts = $conn->prepare("SELECT * FROM `posts` WHERE (title LIKE ? OR category LIKE ?) AND status = ?");
+         $select_posts->execute(['%'.$search_box.'%', '%'.$search_box.'%', 'active']);
          if($select_posts->rowCount() > 0){
             while($fetch_posts = $select_posts->fetch(PDO::FETCH_ASSOC)){
                
@@ -107,9 +107,9 @@ include 'components/like_post.php';
    }
 ?>
    
-<?php include '/components/footer.php'; ?>
+<?php include '../components/footer.php'; ?>
 
-<script src="/js/script.js"></script>
+<script src="../js/script.js"></script>
 
 </body>
 </html>

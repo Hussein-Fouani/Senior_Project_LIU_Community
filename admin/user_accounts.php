@@ -7,6 +7,7 @@ $admin_id = $_SESSION['admin_id'];
 
 if(!isset($admin_id)){
    header('location:admin_login.php');
+   exit;
 }
 
 ?>
@@ -21,14 +22,14 @@ if(!isset($admin_id)){
 
     <!-- font awesome cdn link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="../css/admin_style.css"
+    <link rel="stylesheet" href="../css/admin_style.css">
 
 </head>
 <body>
 
-//header section starts
+<!-- header section starts -->
 <?php include '../components/admin_header.php';?>
-// header section ends
+<!-- header section ends -->
 
 
 <!-- users accounts section starts  -->
@@ -74,6 +75,6 @@ if(!isset($admin_id)){
 
 
 <!-- JS File -->
-<script src="./js/admin_script.js"></script>
+<script src="../js/admin_script.js"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@ $admin_id = $_SESSION['admin_id'];
 
 if(!isset($admin_id)){
    header('location:admin_login.php');
+   exit;
 }
 
 ?>
@@ -140,7 +141,7 @@ if(!isset($admin_id)){
 
 
 <!-- custom js file link  -->
-<script src="./js/admin_script.js"></script>
+<script src="../js/admin_script.js"></script>
 
 </body>
 </html>
