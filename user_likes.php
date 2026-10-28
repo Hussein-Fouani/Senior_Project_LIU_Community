@@ -55,9 +55,9 @@ include 'components/like_post.php';
                
                $post_id = $fetch_posts['id'];
 
-               $count_post_likes = $conn->prepare("SELECT * FROM `likes` WHERE post_id = ?");
-               $count_post_likes->execute([$post_id]);
-               $total_post_likes = $count_post_likes->rowCount(); 
+               $count_post_comments = $conn->prepare("SELECT * FROM `comments` WHERE post_id = ?");
+               $count_post_comments->execute([$post_id]);
+               $total_post_comments = $count_post_comments->rowCount(); 
 
                $count_post_likes = $conn->prepare("SELECT * FROM `likes` WHERE post_id = ?");
                $count_post_likes->execute([$post_id]);
@@ -85,7 +85,7 @@ include 'components/like_post.php';
          <div class="post-content content-150"><?= $fetch_posts['content']; ?></div>
          <a href="view_post.php?post_id=<?= $post_id; ?>" class="inline-btn">read more</a>
          <div class="icons">
-            <a href="view_post.php?post_id=<?= $post_id; ?>"><i class="fas fa-comment"></i><span>(<?= $total_post_likes; ?>)</span></a>
+            <a href="view_post.php?post_id=<?= $post_id; ?>"><i class="fas fa-comment"></i><span>(<?= $total_post_comments; ?>)</span></a>
             <button type="submit" name="like_post"><i class="fas fa-heart" style="<?php if($total_post_likes > 0 AND $user_id != ''){ echo 'color:red;'; }; ?>"></i><span>(<?= $total_post_likes; ?>)</span></button>
          </div>
       

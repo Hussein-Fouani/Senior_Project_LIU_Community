@@ -41,8 +41,8 @@ include 'components/like_post.php';
 
       <?php
          $search_box = $_POST['search_box'];
-         $select_posts = $conn->prepare("SELECT * FROM `posts` WHERE title LIKE '%{$search_box}%' OR category LIKE '%{$search_box}%' AND status = ?");
-         $select_posts->execute(['active']);
+         $select_posts = $conn->prepare("SELECT * FROM `posts` WHERE (title LIKE ? OR category LIKE ?) AND status = ?");
+         $select_posts->execute(['%'.$search_box.'%', '%'.$search_box.'%', 'active']);
          if($select_posts->rowCount() > 0){
             while($fetch_posts = $select_posts->fetch(PDO::FETCH_ASSOC)){
                
